@@ -36,6 +36,7 @@ for (i in arr) {
     }
 }
 console.log('Мінімальний елемент масиву:', arr[res], 'з індексом:', res)
+
 // Знайти максимальний елемент масиву та його порядковий номер.
 max = 0
 for (i in arr) {
@@ -45,6 +46,7 @@ for (i in arr) {
     }
 }
 console.log('Максимальний елемент масиву:', arr[max], 'з індексом:', max)
+
 // Визначити кількість негативних елементів.
 res = 0
 for (i in arr) {
@@ -53,52 +55,50 @@ for (i in arr) {
     }
 }
 console.log('Кількість негативних елементів', res)
+
 // Знайти кількість непарних позитивних елементів.
 negative_array = []
-positive_array = []
-unique_positive_array = []
+noteven_array = []
+even_array = []
 non_unique = []
 
 for (i in arr) {
-    if (arr[i] > 0) {
-        positive_array.push(arr[i])
-    } else if(arr[i] < 0) {
-            negative_array.push(arr[i])
+    if (arr[i] > 0 && arr[i] % 2 !== 0) {
+        noteven_array.push(arr[i])
+    } else if (arr[i] > 0 && arr[i] % 2 == 0) {
+        even_array.push(arr[i])
     }
 }
-y = positive_array.length
+y = noteven_array.length
 
-let positive = positive_array.slice()
-for (let i = 0; i < y; i++) {
-    check = positive_array.shift()
-    if (!(positive_array.includes(check)) && !(non_unique.includes(check))) {
-        unique_positive_array.push(check)
-    } else {
-    non_unique.push(check)
-    }
-}
-console.log('Кількість непарних елементів', unique_positive_array, unique_positive_array.length)
+console.log('Кількість непарних елементів', noteven_array.length)
+
 // Визначити кількість парних позитивних елементів.
-console.log('Кількість парних позитивних елементів', non_unique, non_unique.length)
+console.log('Кількість парних позитивних елементів', even_array.length)
+
 // Знайти суму парних позитивних елементів.
 summ = 0
-for (i in non_unique) {
-    summ += non_unique[i]
+for (i in even_array) {
+    summ += even_array[i]
 }
 console.log('Сума парних позитивних елементів', summ)
+
 // Знайти суму непарних позитивних елементів.
 summ = 0
-for (i in unique_positive_array) {
-    summ += unique_positive_array[i]
+for (i in noteven_array) {
+    summ += noteven_array[i]
 }
 console.log('Сума непарних позитивних елементів', summ)
+
 // Знайти добуток позитивних елементів.
-mult = 0
-for (let i = 0; i < y - 1; i++) {
-    mult += positive[i] * positive[i + 1]
-    i += 1
+mult = 1
+for (i in arr) {
+    if (arr[i] > 0) {
+        mult = mult * arr[i]
+    }
 }
 console.log('Добуток позитивних елементів', mult)
+
 // Знайти найбільший серед елементів масиву, решту занулити.
 for (i in arr) {
     if (arr[i] != arr[max]) {
